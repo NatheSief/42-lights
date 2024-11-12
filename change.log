@@ -1,0 +1,5 @@
+1. Add the README
+    . Purpose, System, Usage, Explanations, ...
+2. Add the .gitignore
+    Remove the .env file, the .vscode folder
+3. Add the main.py empty file
