@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Video Colors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h1>Capture Colors from Video</h1>
+    
+    <form id="captureForm" action="/capture" method="POST">
+        <label for="grandma_ip">Adresse IP de la table GrandMA :</label>
+        <input type="text" id="grandma_ip" name="grandma_ip" required placeholder="Entrer l'IP de la table GrandMA">
+        <button type="submit">Capturer les Couleurs</button>
+        <h1>Contrôle du programme</h1>
+        <button id="stopButton">STOP LE PROGRAMME</button>
+        <script>
+            document.getElementById("stopButton").addEventListener("click", function() {
+                fetch("/stop", { method: "POST" })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                    })
+                    .catch(error => {
+                        alert("Erreur lors de l'arrêt du programme.");
+                    });
+            });
+        </script>
+
+    <h2>Couleurs Dominantes Capturées</h2>
+    <div id="colors"></div>
+
+    <script>
+        // Envoi du formulaire sans recharger la page
+        document.getElementById('captureForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('/capture', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const colors = data.dominant_colors;
+                const colorsDiv = document.getElementById('colors');
+                colorsDiv.innerHTML = '';
+                colors.forEach(color => {
+                    const colorBlock = document.createElement('div');
+                    colorBlock.style.width = '50px';
+                    colorBlock.style.height = '50px';
+                    colorBlock.style.backgroundColor = `rgb(${Math.round(color[0])}, ${Math.round(color[1])}, ${Math.round(color[2])})`;
+                    colorsDiv.appendChild(colorBlock);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

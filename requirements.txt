@@ -1,0 +1,6 @@
+Flask
+requests
+mss
+opencv-python
+scikit-learn
+numpy

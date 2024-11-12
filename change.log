@@ -1,5 +1,9 @@
-1. Add the README
-    . Purpose, System, Usage, Explanations, ...
-2. Add the .gitignore
-    Remove the .env file, the .vscode folder
-3. Add the main.py empty file
+1. PYTHON
+    Creating the python package for the overall gestion :
+        - Interface gestion (window, buttons, table IP, video link (URL or PATH), lights gestion)
+        - IP gestion
+        - Video connection
+        - Light connections and gestion
+    Adding the subprocess package to run cpp, go and node code
+
+2. GO, CPP and NODE folders for the other parts
