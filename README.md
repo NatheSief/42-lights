@@ -1,6 +1,6 @@
 # Light Control for 42's garage :
 All usage restricted for 42 only. Staff or communication team, to enhance events in the garage or other places that use a GrandMA table
-<img src="./bg.png" title="Banner">
+<img src="./bg.jpg" title="Banner">
 ## Purpose :
 Connect a video to the light system and project lights to extend the video ambiant in the room
 
